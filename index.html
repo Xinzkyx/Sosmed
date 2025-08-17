@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <!-- Biar ga bisa zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sosial Media</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background: url('https://files.catbox.moe/crlavf.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 0;
+    }
+    .marquee {
+      background: rgba(0,0,0,0.3);
+      padding: 6px 0;
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      border-radius: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 12s linear infinite;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 0 6px rgba(255,255,255,0.8),
+                   0 0 12px rgba(0,191,255,0.6),
+                   0 0 18px rgba(0,191,255,0.4);
+      font-weight: bold;
+    }
+    @keyframes marquee {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
+
+    .profile {
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .profile img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+    .profile h1 {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 10px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .verified {
+      color: #1da1f2;
+      font-size: 18px;
+    }
+
+    .music-player {
+      margin: 20px auto;
+      padding: 15px;
+      width: 90%;
+      max-width: 350px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+      position: relative;
+    }
+    .music-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 10px 0;
+    }
+    .controls i {
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .controls i:hover {
+      transform: scale(1.2);
+    }
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #1db954;
+      transition: width 0.3s linear;
+    }
+
+    .links {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      z-index: 1;
+    }
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.15);
+      padding: 14px;
+      border-radius: 12px;
+      margin: 10px 0;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .link-item:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    .link-item i {
+      font-size: 20px;
+      width: 25px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="marquee"><span>🔥 Selamat datang di website saya mau pesan am premium ? hubungi kontak di bawah 🔥 </span></div>
+
+  <div class="profile">
+    <img src="https://files.catbox.moe/ft6o7y.jpg" alt="profile">
+    <h1>XINZ KAYX <i class="fas fa-check-circle verified"></i></h1>
+  </div>
+
+  <!-- Music Player -->
+  <div class="music-player">
+    <div class="music-title" id="musicTitle">🎵 Alan Walker - Faded</div>
+    <div class="controls">
+      <i class="fas fa-backward" id="prevBtn"></i>
+      <i class="fas fa-play-circle" id="playBtn"></i>
+      <i class="fas fa-forward" id="nextBtn"></i>
+    </div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <audio id="player"></audio>
+  </div>
+
+  <div class="links">
+    <a href="https://wa.me/6282189305896" target="_blank" class="link-item"><i class="fab fa-whatsapp"></i> Nomor ( Utama )</a>
+    <a href="https://wa.me/6282136975082" target="_blank" class="link-item"><i class="fab fa-whatsapp"></i> Nomor ( Kedua )</a>
+    <a href="https://t.me/Xinzxzx" target="_blank" class="link-item"><i class="fab fa-telegram"></i> Telegram</a>
+    <a href="https://www.instagram.com/xinzkyz?igsh=YzljYTk1ODg3Zg==" target="_blank" class="link-item"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.tiktok.com/@xinzz.kyx_009?_t=ZS-8yxIn6wndFn&_r=1" target="_blank" class="link-item"><i class="fab fa-tiktok"></i> Tiktok</a>
+    <a href="https://youtube.com/@xinzzz_99?si=pcW5nc0H_711sxVU" target="_blank" class="link-item"><i class="fab fa-youtube"></i> YouTube</a>
+  </div>
+
+  <script>
+    const player = document.getElementById("player");
+    const playBtn = document.getElementById("playBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressBar = document.getElementById("progressBar");
+    const musicTitle = document.getElementById("musicTitle");
+
+    // Playlist
+    const playlist = [
+      { title: "🎵 someone's pleasure", src: "https://files.catbox.moe/3d0svq.mp4" },
+      { title: "🎵 where we are ", src: "https://files.catbox.moe/lgayb8.m4a" },
+      { title: "🎵 _Message Bottle Taylors Version", src: "https://files.catbox.moe/nav742.mp4" },
+      { title: "🎵 enak lah ", src: "https://files.catbox.moe/4g9st5.mp4" },
+      { title: "🎵 hard 2 fece realty", src: "https://files.catbox.moe/j712wa.mp4" }
+    ];
+
+    let currentSong = 0;
+
+    function loadSong(index) {
+      player.src = playlist[index].src;
+      musicTitle.textContent = playlist[index].title;
+    }
+
+    loadSong(currentSong);
+
+    playBtn.addEventListener("click", () => {
+      if (player.paused) {
+        player.play();
+        playBtn.classList.replace("fa-play-circle", "fa-pause-circle");
+      } else {
+        player.pause();
+        playBtn.classList.replace("fa-pause-circle", "fa-play-circle");
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentSong = (currentSong - 1 + playlist.length) % playlist.length;
+      loadSong(currentSong);
+      player.play();
+      playBtn.classList.replace("fa-play-circle", "fa-pause-circle");
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentSong = (currentSong + 1) % playlist.length;
+      loadSong(currentSong);
+      player.play();
+      playBtn.classList.replace("fa-play-circle", "fa-pause-circle");
+    });
+
+    player.addEventListener("timeupdate", () => {
+      const progress = (player.currentTime / player.duration) * 100;
+      progressBar.style.width = progress + "%";
+    });
+
+    player.addEventListener("ended", () => {
+      currentSong = (currentSong + 1) % playlist.length;
+      loadSong(currentSong);
+      player.play();
+    });
+
+    // === Media Session API biar bisa kontrol dari notifikasi/lockscreen ===
+    if ('mediaSession' in navigator) {
+      function updateMetadata() {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: playlist[currentSong].title,
+          artist: "Xinz Player",
+          album: "Custom Playlist",
+          artwork: [
+            { src: "https://files.catbox.moe/ft6o7y.jpg", sizes: "512x512", type: "image/png" }
+          ]
+        });
+      }
+
+      player.addEventListener("play", updateMetadata);
+      player.addEventListener("ended", updateMetadata);
+
+      navigator.mediaSession.setActionHandler("play", () => player.play());
+      navigator.mediaSession.setActionHandler("pause", () => player.pause());
+      navigator.mediaSession.setActionHandler("previoustrack", () => {
+        currentSong = (currentSong - 1 + playlist.length) % playlist.length;
+        loadSong(currentSong);
+        player.play();
+      });
+      navigator.mediaSession.setActionHandler("nexttrack", () => {
+        currentSong = (currentSong + 1) % playlist.length;
+        loadSong(currentSong);
+        player.play();
+      });
+    }
+
+    // === Biar musik tetep lanjut walau tab di background ===
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && !player.paused) {
+        console.log("Background mode aktif 🚀");
+      }
+    });
+  </script>
+</body>
+</html>
