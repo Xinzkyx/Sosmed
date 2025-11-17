@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABADI CYBER PRINT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0e27;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Cyber Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        /* Animated Particles */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            animation: particleFloat 15s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Neon Circles */
+        .neon-circle {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        .neon-circle-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,255,255,0.2), transparent);
+            top: -200px;
+            right: -200px;
+        }
+
+        .neon-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,0,255,0.2), transparent);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: 2s;
+        }
+
+        .neon-circle-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(0,255,128,0.2), transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        .container {
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.2),
+                0 0 100px rgba(0, 255, 255, 0.1),
+                inset 0 0 50px rgba(0, 255, 255, 0.05);
+            max-width: 1200px;
+            width: 100%;
+            padding: 50px;
+            position: relative;
+            z-index: 1;
+            animation: containerGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes containerGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 50px rgba(0, 255, 255, 0.2),
+                    0 0 100px rgba(0, 255, 255, 0.1),
+                    inset 0 0 50px rgba(0, 255, 255, 0.05);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 70px rgba(0, 255, 255, 0.4),
+                    0 0 120px rgba(0, 255, 255, 0.2),
+                    inset 0 0 60px rgba(0, 255, 255, 0.08);
+            }
+        }
+
+        /* Scanline Effect */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 50%,
+                rgba(0, 255, 255, 0.03) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: logoRotate 10s linear infinite;
+            box-shadow: 
+                0 0 40px rgba(0, 255, 255, 0.6),
+                0 0 80px rgba(255, 0, 255, 0.4),
+                inset 0 0 20px rgba(0, 255, 255, 0.3);
+            border: 3px solid rgba(0, 255, 255, 0.5);
+        }
+
+        .logo::after {
+            content: '';
+            width: 35px;
+            height: 35px;
+            background: 
+                linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff88 100%);
+            clip-path: polygon(
+                50% 0%, 
+                61% 35%, 
+                98% 35%, 
+                68% 57%, 
+                79% 91%, 
+                50% 70%, 
+                21% 91%, 
+                32% 57%, 
+                2% 35%, 
+                39% 35%
+            );
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.8),
+                0 0 50px rgba(255, 0, 255, 0.6);
+            animation: starPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes starPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.1) rotate(180deg);
+                filter: brightness(1.5);
+            }
+        }
+
+        @keyframes logoRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo::before,
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            border-top-color: #00ffff;
+            border-right-color: #ff00ff;
+            animation: logoOrbit 3s linear infinite;
+        }
+
+        .logo::after {
+            width: 140%;
+            height: 140%;
+            animation: logoOrbit 4s linear infinite reverse;
+        }
+
+        @keyframes logoOrbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ff88, #00ffff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            text-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.5),
+                0 0 60px rgba(255, 0, 255, 0.3);
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+            50% { text-shadow: 0 0 30px rgba(0, 255, 255, 1); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(15, 20, 45, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(0, 255, 255, 0.05);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(0, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0, 255, 255, 0.6);
+            box-shadow: 
+                0 20px 50px rgba(0, 255, 255, 0.3),
+                0 0 50px rgba(0, 255, 255, 0.2),
+                inset 0 0 30px rgba(0, 255, 255, 0.1);
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.5),
+                0 0 40px rgba(255, 0, 255, 0.3);
+            animation: iconPulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            opacity: 0.2;
+        }
+
+        .card-icon::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+        }
+
+        /* Icon Print - Colorful Printer */
+        .icon-print::before {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #00ffff 0%, #00ff88 100%);
+            clip-path: polygon(20% 0%, 80% 0%, 80% 70%, 60% 70%, 50% 85%, 40% 70%, 20% 70%);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+
+        /* Icon B&W - Multiple Triangles */
+        .icon-bw::before {
+            width: 26px;
+            height: 26px;
+            background: 
+                linear-gradient(135deg, #ff00ff 30%, transparent 30%),
+                linear-gradient(225deg, #00ffff 30%, transparent 30%),
+                linear-gradient(315deg, #00ff88 30%, transparent 30%);
+            background-size: 50% 50%;
+            background-position: top left, top right, bottom left;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+        }
+
+        /* Icon Copy - Layered Documents */
+        .icon-copy::before {
+            width: 24px;
+            height: 28px;
+            background: 
+                linear-gradient(135deg, #ff00ff 0%, #ff0080 100%);
+            clip-path: polygon(0% 20%, 70% 20%, 70% 0%, 100% 25%, 100% 100%, 0% 100%);
+            box-shadow: 
+                3px 3px 0 rgba(0, 255, 255, 0.5),
+                6px 6px 0 rgba(0, 255, 136, 0.3),
+                0 0 15px rgba(255, 0, 255, 0.8);
+        }
+
+        /* Icon Binding - Book with Colorful Spine */
+        .icon-binding::before {
+            width: 22px;
+            height: 30px;
+            background: 
+                linear-gradient(90deg, #00ffff 0%, #00ffff 30%, transparent 30%, transparent 100%),
+                linear-gradient(135deg, #ff00ff 30%, #00ff88 100%);
+            border-radius: 2px;
+            box-shadow: 
+                inset -2px 0 0 rgba(0, 255, 255, 0.8),
+                0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Add extra glow lines for binding */
+        .icon-binding::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 30px;
+            left: 12px;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 4px,
+                    rgba(0, 255, 255, 0.6) 4px,
+                    rgba(0, 255, 255, 0.6) 6px
+                );
+            z-index: 2;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            font-size: 1.4em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .input-group {
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 18px 22px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            font-size: 18px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            color: #00ffff;
+            transition: all 0.3s;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="number"]::placeholder {
+            color: rgba(0, 255, 255, 0.3);
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #00ffff;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.4),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        select {
+            cursor: pointer;
+            color: #00ffff;
+        }
+
+        select option {
+            background: #0a0e27;
+            color: #00ffff;
+        }
+
+        .price-info {
+            font-size: 0.95em;
+            color: #ff00ff;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, #00ffff, #00ff88);
+            color: #0a0e27;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+            background-size: 200% 100%;
+            color: #0a0e27;
+            border: 3px solid rgba(0, 255, 255, 0.5);
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 
+                0 0 40px rgba(0, 255, 255, 0.5),
+                0 0 80px rgba(255, 0, 255, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: btnGlow 2s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+
+        @keyframes btnGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 40px rgba(0, 255, 255, 0.5),
+                    0 0 80px rgba(255, 0, 255, 0.3),
+                    inset 0 0 20px rgba(255, 255, 255, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 0 60px rgba(0, 255, 255, 0.8),
+                    0 0 100px rgba(255, 0, 255, 0.5),
+                    inset 0 0 30px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .btn:hover {
+            background-position: 100% 0;
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 80px rgba(0, 255, 255, 0.8),
+                0 0 120px rgba(255, 0, 255, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: btnShine 3s linear infinite;
+        }
+
+        @keyframes btnShine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .result {
+            margin-top: 50px;
+            padding: 50px;
+            background: rgba(15, 20, 45, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            display: none;
+            animation: resultAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 0 50px rgba(255, 0, 255, 0.3),
+                inset 0 0 30px rgba(255, 0, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff88, #00ffff);
+            background-size: 300% 100%;
+            border-radius: 30px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes resultAppear {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .result h2 {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 35px;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #00ffff;
+            border-radius: 12px;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .result-item:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-left-color: #ff00ff;
+            padding-left: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .result-item span {
+            color: #00ffff;
+            font-weight: 600;
+        }
+
+        .result-item strong {
+            color: #00ff88;
+            font-size: 1.3em;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        .result-total {
+            margin-top: 35px;
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border: 3px solid #00ffff;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.5),
+                inset 0 0 30px rgba(0, 255, 255, 0.1);
+            animation: totalPulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes totalPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 0 50px rgba(0, 255, 255, 0.5),
+                    inset 0 0 30px rgba(0, 255, 255, 0.1);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 
+                    0 0 70px rgba(0, 255, 255, 0.8),
+                    inset 0 0 40px rgba(0, 255, 255, 0.2);
+            }
+        }
+
+        .result-total::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: totalShine 3s linear infinite;
+        }
+
+        @keyframes totalShine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .result-total span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .discount-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff00ff, #ff0080);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-size: 0.75em;
+            font-weight: 700;
+            margin-left: 12px;
+            box-shadow: 
+                0 0 20px rgba(255, 0, 255, 0.6),
+                0 0 40px rgba(255, 0, 128, 0.3);
+            animation: badgeFloat 2s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-5px) rotate(3deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: #00ffff;
+            font-size: 1.3em;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Holographic Effect */
+        .hologram {
+            position: fixed;
+            pointer-events: none;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.3),
+                inset 0 0 50px rgba(0, 255, 255, 0.1);
+            animation: holoFloat 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes holoFloat {
+            0%, 100% {
+                transform: translate(20vw, 20vh) rotate(0deg);
+            }
+            25% {
+                transform: translate(80vw, 30vh) rotate(90deg);
+            }
+            50% {
+                transform: translate(70vw, 70vh) rotate(180deg);
+            }
+            75% {
+                transform: translate(30vw, 80vh) rotate(270deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                letter-spacing: 2px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result {
+                padding: 30px 20px;
+            }
+
+            .result-total {
+                font-size: 1.3em;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles -->
+    <script>
+        for(let i = 0; i < 50; i++) {
+            let particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(particle);
+        }
+    </script>
+
+    <!-- Neon Circles -->
+    <div class="neon-circle neon-circle-1"></div>
+    <div class="neon-circle neon-circle-2"></div>
+    <div class="neon-circle neon-circle-3"></div>
+
+    <!-- Hologram -->
+    <div class="hologram"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo"></div>
+            </div>
+            <h1>ABADI</h1>
+            <p class="subtitle">◢ Cyber Print System ◣</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-print"></div>
+                    <h3>Color Print</h3>
+                </div>
+                <div class="input-group">
+                    <label for="printWarna">◢ Quantity ◣</label>
+                    <input type="number" id="printWarna" min="0" value="0" placeholder="000">
+                    <p class="price-info">
+                        <span class="price-tag">2K/UNIT</span>
+                        <span>◢ 15% OFF &gt; 100 ◣</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-bw"></div>
+                    <h3>B&W Print</h3>
+                </div>
+                <div class="input-group">
+                    <label for="printHP">◢ Quantity ◣</label>
+                    <input type="number" id="printHP" min="0" value="0" placeholder="000">
+                    <p class="price-info">
+                        <span class="price-tag">1K/UNIT</span>
+                        <span>◢ 10% OFF &gt; 200 ◣</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-copy"></div>
+                    <h3>Color Copy</h3>
+                </div>
+                <div class="input-group">
+                    <label for="fcWarna">◢ Quantity ◣</label>
+                    <input type="number" id="fcWarna" min="0" value="0" placeholder="000">
+                    <p class="price-info">
+                        <span class="price-tag">650/UNIT</span>
+                        <span>◢ 550 &gt; 100 ◣</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-copy"></div>
+                    <h3>B&W Copy</h3>
+                </div>
+                <div class="input-group">
+                    <label for="fcHP">◢ Quantity ◣</label>
+                    <input type="number" id="fcHP" min="0" value="0" placeholder="000">
+                    <p class="price-info">
+                        <span class="price-tag">100/UNIT</span>
+                        <span>◢ 85 &gt; 150 ◣</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <div class="card-icon icon-binding"></div>
+                    <h3>Binding</h3>
+                </div>
+                <div class="grid" style="gap: 20px;">
+                    <div class="input-group">
+                        <label for="jumlahJilid">◢ Quantity ◣</label>
+                        <input type="number" id="jumlahJilid" min="0" value="0" placeholder="000">
+                    </div>
+                    <div class="input-group">
+                        <label for="jenisJilid">◢ Type ◣</label>
+                        <select id="jenisJilid">
+                            <option value="0">[ SELECT TYPE ]</option>
+                            <option value="7000">▸ STAPLES - 7K</option>
+                            <option value="15000">▸ SPIRAL - 15K</option>
+                            <option value="20000">▸ HOT GLUE - 20K</option>
+                            <option value="25000">▸ HARD COVER - 25K</option>
+                            <option value="5000">▸ TAPE - 5K</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn" onclick="hitungTotal()">
+            <span>◢◤ CALCULATE TOTAL ◥◣</span>
+        </button>
+
+        <div class="result" id="result">
+            <h2>◢ TRANSACTION DATA ◣</h2>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <script>
+        function formatRupiah(angka) {
+            return angka.toLocaleString('id-ID') + ' CR';
+        }
+
+        function hitungPrintWarna(jumlah) {
+            let harga = jumlah * 2000;
+            let diskon = false;
+            
+            if (jumlah > 100) {
+                harga = harga * 0.85;
+                diskon = true;
+            }
+            
+            return { harga, diskon };
+        }
+
+        function hitungPrintHP(jumlah) {
+            let harga = jumlah * 1000;
+            let diskon = false;
+            
+            if (jumlah > 200) {
+                harga = harga * 0.90;
+                diskon = true;
+            }
+            
+            return { harga, diskon };
+        }
+
+        function hitungFCWarna(jumlah) {
+            let harga = jumlah * 650;
+            let diskon = false;
+            
+            if (jumlah > 100) {
+                harga = jumlah * 550;
+                diskon = true;
+            }
+            
+            return { harga, diskon };
+        }
+
+        function hitungFCHP(jumlah) {
+            let harga = jumlah * 100;
+            let diskon = false;
+            
+            if (jumlah > 150) {
+                harga = jumlah * 85;
+                diskon = true;
+            }
+            
+            return { harga, diskon };
+        }
+
+        function hitungTotal() {
+            const printWarna = parseInt(document.getElementById('printWarna').value) || 0;
+            const printHP = parseInt(document.getElementById('printHP').value) || 0;
+            const fcWarna = parseInt(document.getElementById('fcWarna').value) || 0;
+            const fcHP = parseInt(document.getElementById('fcHP').value) || 0;
+            const jumlahJilid = parseInt(document.getElementById('jumlahJilid').value) || 0;
+            const jenisJilid = parseInt(document.getElementById('jenisJilid').value) || 0;
+
+            const hasilPrintWarna = hitungPrintWarna(printWarna);
+            const hasilPrintHP = hitungPrintHP(printHP);
+            const hasilFCWarna = hitungFCWarna(fcWarna);
+            const hasilFCHP = hitungFCHP(fcHP);
+            const hargaJilid = jumlahJilid * jenisJilid;
+
+            const total = hasilPrintWarna.harga + hasilPrintHP.harga + 
+                         hasilFCWarna.harga + hasilFCHP.harga + hargaJilid;
+
+            let html = '';
+            let hasItems = false;
+            
+            if (printWarna > 0) {
+                hasItems = true;
+                html += `<div class="result-item">
+                    <span>▸ COLOR PRINT: ${printWarna} units ${hasilPrintWarna.diskon ? '<span class="discount-badge">◢ 15% OFF ◣</span>' : ''}</span>
+                    <strong>${formatRupiah(hasilPrintWarna.harga)}</strong>
+                </div>`;
+            }
+            
+            if (printHP > 0) {
+                hasItems = true;
+                html += `<div class="result-item">
+                    <span>▸ B&W PRINT: ${printHP} units ${hasilPrintHP.diskon ? '<span class="discount-badge">◢ 10% OFF ◣</span>' : ''}</span>
+                    <strong>${formatRupiah(hasilPrintHP.harga)}</strong>
+                </div>`;
+            }
+            
+            if (fcWarna > 0) {
+                hasItems = true;
+                html += `<div class="result-item">
+                    <span>▸ COLOR COPY: ${fcWarna} units ${hasilFCWarna.diskon ? '<span class="discount-badge">◢ SPECIAL ◣</span>' : ''}</span>
+                    <strong>${formatRupiah(hasilFCWarna.harga)}</strong>
+                </div>`;
+            }
+            
+            if (fcHP > 0) {
+                hasItems = true;
+                html += `<div class="result-item">
+                    <span>▸ B&W COPY: ${fcHP} units ${hasilFCHP.diskon ? '<span class="discount-badge">◢ SPECIAL ◣</span>' : ''}</span>
+                    <strong>${formatRupiah(hasilFCHP.harga)}</strong>
+                </div>`;
+            }
+            
+            if (jumlahJilid > 0 && jenisJilid > 0) {
+                hasItems = true;
+                const jenisText = document.getElementById('jenisJilid').options[document.getElementById('jenisJilid').selectedIndex].text;
+                html += `<div class="result-item">
+                    <span>▸ ${jenisText.split('-')[0].trim()}: ${jumlahJilid} units</span>
+                    <strong>${formatRupiah(hargaJilid)}</strong>
+                </div>`;
+            }
+
+            if (!hasItems) {
+                html = '<div class="empty-state">◢ NO DATA SELECTED ◣<br>PLEASE INPUT QUANTITY</div>';
+            } else {
+                html += `<div class="result-total">
+                    <span>◢ TOTAL CREDIT ◣</span>
+                    <span>${formatRupiah(total)}</span>
+                </div>`;
+            }
+
+            document.getElementById('resultContent').innerHTML = html;
+            document.getElementById('result').style.display = 'block';
+            
+            document.getElementById('result').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+    </script>
+</body>
+</html>
